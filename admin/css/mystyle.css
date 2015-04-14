@@ -1,0 +1,30 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    padding-top: 3.2em;
+}
+#page_header{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Lobster', cursive;
+}
+.top-nav{
+    background-color: #5bc0de;
+}
+.hide-toggle{
+    display: none;
+}
+
+#query{
+    border: 1px solid brown;
+    font-size: large;
+    padding: 2em;
+}
+
+.subject{
+    font-size: larger;
+    font-weight: bolder;
+    font-family: Tahoma;
+}
