@@ -1,6 +1,8 @@
 <?php
 require 'php/DBConnect.php';
 $db = new DBConnect();
+$db->authCheck();//If the admin has logged in successfully
+
 $branches = $db->getBranchNames();
 
 $students = NULL;
@@ -73,7 +75,7 @@ include 'layout/_header.php';
 
                         <?php foreach ($students as $s): ?>
                         <tr>
-                            <td><a href="profile.php?enrollment=<?= $s['enrollment']; ?>"><?= $s['first_name']; ?> <?= $s['last_name']; ?></a></td>
+                            <td><a href="profile.php?enrollment=<?= $s['enrollment']; ?>&id=<?= $s['acad_id']; ?>"><?= $s['first_name']; ?> <?= $s['last_name']; ?></a></td>
                             <td><?= $s['enrollment']; ?></td>
                             <td><?= $s['branch']; ?></td>
                             <td><?= $s['semester']; ?></td>

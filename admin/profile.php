@@ -1,11 +1,16 @@
 <?php
 $enrollment = $_GET['enrollment'];
+$id = $_GET['id'];
 
 require_once 'php/DBConnect.php';
 $db = new DBConnect();
+$db->authCheck(); //If the admin has logged in successfully
+
 $studentPersonalInfo = $db->selectStudentPersonalInfoViaEnrollment($enrollment);
 $studentBasicInfo = $db->selectStudentBasicInfoViaEnrollment($enrollment);
 $studentAcadInfo = $db->selectStudentAcadInfoViaEnrollment($enrollment);
+$totalBackSubjects = $db->getTotalBackSubjects($id);
+$currentBackSubjects = $db->getCurrentBackSubjects($id);
 
 $title="Student Profile";
 include 'layout/_header.php';
@@ -129,6 +134,52 @@ include 'layout/_header.php';
                     </table>
                 </div>
             </div>
+            
+            <!-- Total Back Subjects -->
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3>Total Back Log Subjects</h3>
+                </div>
+                <div class="panel-body">
+                    <?php if(isset($totalBackSubjects)): ?>
+                    <table class="table table-striped">
+                        <tbody>
+                            <?php foreach($totalBackSubjects as $t): ?>
+                            <tr>
+                                <td>Subject: <strong><?= $t['subject']; ?></strong></td>
+                                
+                            </tr>                          
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <?php endif; ?>
+                </div>
+                
+            </div>
+            <!-- Total Back Subjects end -->
+            
+            <!-- Current Back Subjects -->
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3>Current Back Log Subjects</h3>
+                </div>
+                <div class="panel-body">
+                    <?php if(isset($currentBackSubjects)): ?>
+                    <table class="table table-striped">
+                        <tbody>
+                            <?php foreach($currentBackSubjects as $c): ?>
+                            <tr>
+                                <td>Subject: <strong><?= $c['subject']; ?></strong></td>
+                                
+                            </tr>                          
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <?php endif; ?>
+                </div>
+                
+            </div>
+            <!-- Current Back Subjects end -->
         </div>
     </div>
 </div>

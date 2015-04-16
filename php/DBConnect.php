@@ -62,14 +62,35 @@ class DBConnect {
     public function insertAcademicInfo($enrollment, $tBackLogs, $cBackLog, $cgpa){
         $stmt = $this->db->prepare("INSERT INTO s_acad_info (enrollment,t_back_logs,c_back_log,cgpa) VALUES (?,?,?,?)");
         $stmt->execute([$enrollment,$tBackLogs,$cBackLog,$cgpa]);
-        return true;
+        return $this->db->lastInsertId();
     }
     
     
     
     public function insertStudentQuery($name,$email,$subject,$message){
-        $stmt = $this->db->prepare("INSERT INTO queries (name,email,subject,message) VALUES (?,?,?,?)");
-        $stmt->execute([$name,$email,$subject,$message]);
+        $stmt = $this->db->prepare("INSERT INTO queries (name,email,subject,message,`ignore`) VALUES (?,?,?,?,?)");
+        $stmt->execute([$name,$email,$subject,$message,false]);
         return true;
+    }
+    
+    public function insertTotalBackNames($id, $subject){
+        $stmt = $this->db->prepare("INSERT INTO total_backs (s_id, subject) VALUES (?,?)");
+        $stmt->execute([$id,$subject]);
+        return true;
+    }
+    
+    public function insertCurrentBackNames($id,$subject){
+        $stmt = $this->db->prepare("INSERT INTO current_backs (s_id, subject) VALUES (?,?)");
+        $stmt->execute([$id,$subject]);
+        return true;
+    }
+    
+    public function fetchTopFiveNews(){
+        $stmt = $this->db->prepare("SELECT * 
+FROM news 
+ORDER BY created_at DESC
+LIMIT 5");
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }

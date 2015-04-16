@@ -5,6 +5,9 @@ $db->seedBranches();
 $branches = $db->getBranchNames();
 
 $message = null;
+/*
+ * This is when student submits basic information
+ */
 if (isset($_POST['basicSubmit'])) {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -13,6 +16,7 @@ if (isset($_POST['basicSubmit'])) {
     $branch = $_POST['branch'];
     $semester = $_POST['semester'];
 
+
     $flag = $db->insertBasicInfo($firstName, $lastName, $email, $enrollment, $branch, $semester);
     if ($flag) {
         $message = "Information has been saved successfully! Please fill your personal info form.";
@@ -20,6 +24,9 @@ if (isset($_POST['basicSubmit'])) {
         $message = "There was some error saving your details.";
     }
 }
+/*
+ * This is when student sumits personal information
+ */
 if (isset($_POST['personalSubmit'])) {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -40,6 +47,9 @@ if (isset($_POST['personalSubmit'])) {
         $message = "There was some error saving your details.";
     }
 }
+/*
+ * This is when student submit Academic Information
+ */
 if (isset($_POST['acadSubmit'])) {
     $currentBackLogs = [];
     $totalBackLogs = [];
@@ -47,10 +57,41 @@ if (isset($_POST['acadSubmit'])) {
     $tBackLogs = $_POST['tBackLogs'];
     $cBackLog = $_POST['cBackLog'];
     $cgpa = $_POST['cgpa'];
+
+    /*
+     * if Student doesn't enter anything or doesn't have any back
+     */
+    if($cBackLog == '0' || $cBackLog == null || $cBackLog == ""){
+        $cBackLog = "none";
+    }
+    if($tBackLogs == '0' || $tBackLogs == null || $tBackLogs == ""){
+        $tBackLogs = "none";
+    }
+    /*
+     * If student has any back then these are the name of the papers.
+     */
+    if(isset($_POST['currentbacklogs'])){ $currentBackLogs = $_POST['currentbacklogs'];}
+    if(isset($_POST['totalbacklogs'])){ $totalBackLogs = $_POST['totalbacklogs'];}
+    
+    // Calling the database class
     require_once 'php/DBConnect.php';
     $db = new DBConnect();
-    $flag = $db->insertAcademicInfo($enrollment, $tBackLogs, $cBackLog, $cgpa);
-    if ($flag) {
+    $sId = $db->insertAcademicInfo($enrollment, $tBackLogs, $cBackLog, $cgpa);
+    
+    if(isset($currentBackLogs)){
+        foreach($currentBackLogs as $c){
+//            var_dump($c);
+//            die();
+            $db->insertCurrentBackNames($sId, $c);
+        }
+    }
+    if(isset($totalBackLogs)){
+        foreach($totalBackLogs as $t){
+            $db->insertTotalBackNames($sId, $t);
+        }
+    }
+    
+    if ($sId) {
         $message = "Information has been saved successfully! You can now go home";
     } else {
         $message = "There was some error saving your details.";
@@ -75,9 +116,9 @@ include 'layout/_header.php';
                 </div>           
             <?php endif; ?>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#basic_info" id="basicBtn">Basic Info</a></li>
-                <li class=""><a href="#personal_info" id="personalBtn">Personal Info</a></li>
-                <li class=""><a href="#academic_info" id="academicBtn">Academic Info</a></li>
+                <li class="active"><a href="#basic_info" id="basicBtn" class="tabs">Basic Info</a></li>
+                <li class=""><a href="#personal_info" id="personalBtn" class="tabs">Personal Info</a></li>
+                <li class=""><a href="#academic_info" id="academicBtn" class="tabs">Academic Info</a></li>
             </ul>
             <div class="" id="basic_info">
                 <div class="panel panel-default">
@@ -134,7 +175,7 @@ include 'layout/_header.php';
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default" name="basicSubmit">Send</button>
+                                        <button type="submit" class="btn btn-success" name="basicSubmit">Send</button>
                                     </div>
                                 </div>
                             </form>
@@ -204,7 +245,7 @@ include 'layout/_header.php';
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default" name="personalSubmit">Send</button>
+                                        <button type="submit" class="btn btn-success" name="personalSubmit">Send</button>
                                     </div>
                                 </div>
                             </form>
@@ -228,9 +269,9 @@ include 'layout/_header.php';
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="fname" class="col-sm-2 control-label">Total Back logs</label>
+                                    <label for="fname" class="col-sm-2 control-label">Total Back logs (numeric)</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="tBackLogs" id="total_backs" placeholder="Number of Back Logs so far">
+                                        <input type="number" class="form-control" min="0" name="tBackLogs" id="total_backs" placeholder="Number of Back Logs so far">
                                     </div>
                                 </div>
                                 <div class="form-group" >
@@ -238,9 +279,9 @@ include 'layout/_header.php';
                                     <div class="col-sm-10" id="total_backs_div"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="roll_no" class="col-sm-2 control-label">Current Back log</label>
+                                    <label for="roll_no" class="col-sm-2 control-label">Current Back log (numberic)</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="cBackLog" class="form-control" id="current_back" placeholder="Total Current Back Logs"/>
+                                        <input type="number" name="cBackLog" min="0" class="form-control" id="current_back" placeholder="Total Current Back Logs"/>
                                     </div>
                                 </div>
                                 <div class="form-group" >
@@ -256,7 +297,7 @@ include 'layout/_header.php';
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default" name="acadSubmit">Send</button>
+                                        <button type="submit" class="btn btn-success" name="acadSubmit">Send</button>
                                     </div>
                                 </div>
                             </form>

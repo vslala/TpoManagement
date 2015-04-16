@@ -1,18 +1,51 @@
-*{
+/**{
     margin: 0px;
     padding: 0px;
-}
+}*/
 body{
+    background-image: url("http://localhost/tpomanagement/assets/bg-wallpaper.jpg");
+    opacity: 1;
     padding-top: 3.2em;
+    
 }
+
 #page_header{
     font-size: xx-large;
     font-weight: bolder;
     font-family: 'Lobster', cursive;
+    color: lightyellow;
+}
+.tabs{
+    background-color: #d0e9c6;
+    color: black;
 }
 .top-nav{
     background-color: #5bc0de;
 }
 .hide-toggle{
     display: none;
+}
+.panel-head-text{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Lobster', cursive;
+}
+.news-heading{
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: Tahoma;
+    color: crimson;
+}
+.news-content{
+    font-size: medium;
+    font-weight: bold;
+    font-family: verdana, cursive;
+    color: blue;
+}
+
+footer{
+    text-align: center;
+    background-color: black;
+    font-family: tahoma;
+    color: white;
 }

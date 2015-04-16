@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="logo-left-15 pull-left">
-                    <div class="h4" id="logo"><a href="index.php">Tpo Management</a></div>
+                    <div class="h4" id="logo"><a href="home.php">Tpo Management</a></div>
                 </div>
             </div>
             <div class="col-md-6"></div>
@@ -41,7 +41,7 @@
                             } else {
                                 echo '';
                             }
-                        ?>"><a href="contact.php">Contact</a></li>
+                        ?>"><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>

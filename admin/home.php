@@ -1,7 +1,20 @@
 <?php
 require_once 'php/DBConnect.php';
 $db = new DBConnect();
+$db->authCheck();
 $queries = $db->getStudentQueries();
+
+$message = NULL;
+if(isset($_POST['newsSubmitBtn'])){
+    $heading = $_POST['heading'];
+    $content = $_POST['content'];
+    $flag = $db->updateNews($heading, $content);
+    if($flag){
+        $message = "News has been updated Successfully!";
+    }else{
+        $message = "There was some error updating the news!";
+    }
+}
 
 $title = "Home";
 $setHomeActive = "active";
@@ -13,9 +26,12 @@ include 'layout/_header.php';
 <div class="container">
     <div class="row">
         <div class="col-md-4">
+            <?php if(isset($message)): ?>
+            <div class="alert-info"><?= $message; ?> </div>
+            <?php endif; ?>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="page_header">
+                    <div id="page_header" id="message">
                         News Update
                     </div>
                     <div class="panel-body">
@@ -37,7 +53,7 @@ include 'layout/_header.php';
             </div>
         </div>
         <div class="col-md-8">
-            <div class="panel panel-default">
+            <div class="panel panel-danger">
                 <div class="panel-body">
                     <div id="page_header">
                         Student's Queries
@@ -59,6 +75,7 @@ include 'layout/_header.php';
                                                         <a href="php/ignore.php?id=<?= $q['id']; ?>" class="btn btn-danger btn-sm">Ignore</a>
                                                     </div>
                                                 </li>
+                                                <li class="nav-divider"></li>
                                             </ul>
 
 

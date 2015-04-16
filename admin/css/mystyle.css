@@ -3,6 +3,7 @@
     padding: 0px;
 }
 body{
+    background-image: url("http://www.thoinayweb.com/wp-content/uploads/2013/12/powerpoint-background.jpg");
     padding-top: 3.2em;
 }
 #page_header{
@@ -18,7 +19,7 @@ body{
 }
 
 #query{
-    border: 1px solid brown;
+    border-bottom: 5px solid gray;
     font-size: large;
     padding: 2em;
 }

@@ -15,38 +15,38 @@ $(document).ready(function() {
     /*
      * Total Back Logs
      */
-//    $("body").on("keyup", "#total_backs", (function() {
-//
-//        var value = $(this).val();
-//        var div = $("#total_backs_div");
-//        console.log(value);
-//        if (value == "" || value == null) {
-//            $(div).empty();
-//        } else {
-//            for (var i = 0; i < parseInt(value); i++) {
-//                $(div).append('<input type="text" class="form-control" name="totalbacklogs[]" placeholder="Name of the paper" /> <br>');
-//            }
-//        }
-//
-//    }));
-//    
-//    /*
-//     * Total Current Back Logs
-//     */
-//    $("body").on("keyup", "#current_back", (function() {
-//
-//        var value = $(this).val();
-//        var div = $("#current_backs_div");
-//        console.log(value);
-//        if (value == "" || value == null) {
-//            $(div).empty();
-//        } else {
-//            for (var i = 0; i < parseInt(value); i++) {
-//                $(div).append('<input type="text" class="form-control" name="currentbacklogs[]" placeholder="Name of the paper" /> <br>');
-//            }
-//        }
-//
-//    }));
+    $("body").on("keyup", "#total_backs", (function() {
+
+        var value = $(this).val();
+        var div = $("#total_backs_div");
+        console.log(value);
+        if (value == "" || value == null) {
+            $(div).empty();
+        } else {
+            for (var i = 0; i < parseInt(value); i++) {
+                $(div).append('<input type="text" class="form-control" name="totalbacklogs[]" placeholder="Name of the paper" /> <br>');
+            }
+        }
+
+    }));
+    
+    /*
+     * Total Current Back Logs
+     */
+    $("body").on("keyup", "#current_back", (function() {
+
+        var value = $(this).val();
+        var div = $("#current_backs_div");
+        console.log(value);
+        if (value == "" || value == null) {
+            $(div).empty();
+        } else {
+            for (var i = 0; i < parseInt(value); i++) {
+                $(div).append('<input type="text" class="form-control" name="currentbacklogs[]" placeholder="Name of the paper" /> <br>');
+            }
+        }
+
+    }));
 });
 
 var toggleForm = function(buttonClick, btn2, btn3) {
