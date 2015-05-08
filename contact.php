@@ -40,25 +40,25 @@ include 'layout/_header.php';
                             <div class="form-group">
                                 <label for="name" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="subject" class="col-sm-2 control-label">Subject</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Cause for Contact">
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Cause for Contact" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="message" class="col-sm-2 control-label">Message</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="8" name="message" placeholder="Reason For Contact"></textarea>
+                                    <textarea class="form-control" rows="8" minlength="25" name="message" placeholder="Reason For Contact" required="true"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">

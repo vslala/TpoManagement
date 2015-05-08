@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION['admin'])) {
-    header("Location: http://localhost/tpomanagement/admin/home.php");
-}
+//if (isset($_SESSION['username'])) {
+//    header("Location: http://localhost/tpomanagement/admin/home.php");
+//}
 $message = NULL;
 if (isset($_POST['loginBtn'])) {
     $admin = $_POST['admin'];

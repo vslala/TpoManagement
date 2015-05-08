@@ -67,7 +67,7 @@ include 'layout/_header.php';
                                         <li id="query">
                                             <ul class="nav nav-stacked">
                                                 <li><span class="glyphicon glyphicon-time time"><?= $q['created_at']; ?></span></li>
-                                                <li><span class="glyphicon glyphicon-user subject"><?= $q['subject']; ?> </span> </li>
+                                                <li><span class="glyphicon glyphicon-user subject"></span><?= $q['subject']; ?>  </li>
                                                 <li>
                                                     <div class="pull-left content"><?= $q['message']; ?></div>
                                                     <div class="form-group-sm pull-right">

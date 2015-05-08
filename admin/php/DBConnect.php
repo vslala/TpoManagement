@@ -147,5 +147,41 @@ AND branches.id = ?");
         $stmt->execute([$id]);
         return $stmt->fetchAll();
     }
+    
+    public function addCompany($cname,$caddress,$email,$mobile,$fax,$ceo){
+        $stmt = $this->db->prepare("INSERT INTO companies (c_name,c_address,email,mobile,fax,ceo) VALUES (?,?,?,?,?,?)");
+        if($stmt->execute([$cname,$caddress,$email,$mobile,$fax,$ceo]))
+            return true;
+        else
+            return false;
+    }
+    
+    public function selectAllFromCompanies(){
+        $stmt = $this->db->prepare("SELECT * FROM companies");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    
+    public function selectCompanyById($id){
+        $stmt = $this->db->prepare("SELECT * FROM companies WHERE id=?");
+        $stmt->execute([$id]);
+        return $stmt->fetchAll();
+    }
+    
+    public function updateCompany($cname,$caddress,$email,$mobile,$fax,$ceo,$id){
+        $stmt = $this->db->prepare("UPDATE companies SET c_name=?,c_address=?,email=?,mobile=?,fax=?,ceo=? WHERE id=?");
+        if($stmt->execute([$cname,$caddress,$email,$mobile,$fax,$ceo, $id]))
+                return true;
+        else
+            return false;
+    }
+    
+    public function deleteCompany($id){
+        $stmt = $this->db->prepare("DELETE FROM companies WHERE id=?");
+        if($stmt->execute([$id]))
+                return true;
+        else
+            return false;
+    }
 
 }

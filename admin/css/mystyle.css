@@ -29,3 +29,10 @@ body{
     font-weight: bolder;
     font-family: Tahoma;
 }
+
+.panel-head-text{
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: "Lobster", cursive;
+    
+}

@@ -128,22 +128,22 @@ include 'layout/_header.php';
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Name</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" name="firstName" id="first_name" placeholder="First Name">
+                                        <input type="text" class="form-control" name="firstName" id="first_name" placeholder="First Name" required="true">
                                     </div>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name">
+                                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="roll_no" class="col-sm-2 control-label">Enrollment Number</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="enrollment" placeholder="xxxxbranchxxxx##" class="form-control" />
+                                        <input type="text" name="enrollment" placeholder="xxxxbranchxxxx##" class="form-control" required="true"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -194,34 +194,34 @@ include 'layout/_header.php';
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Name</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" name="firstName" id="first_name" placeholder="First Name">
+                                        <input type="text" class="form-control" name="firstName" id="first_name" placeholder="First Name" required="true">
                                     </div>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name">
+                                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="fname" class="col-sm-2 control-label">Father's Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="fname" id="email" >
+                                        <input type="text" class="form-control" name="fname" id="email" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="roll_no" class="col-sm-2 control-label">D.O.B</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="dob" class="form-control" />
+                                        <input type="date" name="dob" class="form-control" required="true"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="enrollment" class="col-sm-2 control-label">Enrollment Number</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="enrollment" class="form-control" />
+                                        <input type="text" name="enrollment" class="form-control" required="true"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="branch" class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="email" name="email" class="form-control" />
+                                        <input type="email" name="email" class="form-control" required="true"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -234,13 +234,13 @@ include 'layout/_header.php';
                                 <div class="form-group">
                                     <label for="mobile" class="col-sm-2 control-label">Mobile</label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="mobile" class="form-control" />
+                                        <input type="number" name="mobile" max="10000000000" class="form-control" required="true"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="address" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="address" rows="6"></textarea>
+                                        <textarea class="form-control" name="address" rows="6" required="true"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -264,14 +264,14 @@ include 'layout/_header.php';
                                 <div class="form-group">
                                     <label for="enrollment" class="col-sm-2 control-label">Enrollment Number</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="enrollment" id="enrollment" placeholder="####xx######">
+                                        <input type="text" class="form-control" name="enrollment" id="enrollment" placeholder="####xx######" required="true">
                                     </div>
 
                                 </div>
                                 <div class="form-group">
                                     <label for="fname" class="col-sm-2 control-label">Total Back logs (numeric)</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" min="0" name="tBackLogs" id="total_backs" placeholder="Number of Back Logs so far">
+                                        <input type="number" class="form-control" min="0" name="tBackLogs" id="total_backs" placeholder="Number of Back Logs so far" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group" >
@@ -281,7 +281,7 @@ include 'layout/_header.php';
                                 <div class="form-group">
                                     <label for="roll_no" class="col-sm-2 control-label">Current Back log (numberic)</label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="cBackLog" min="0" class="form-control" id="current_back" placeholder="Total Current Back Logs"/>
+                                        <input type="number" name="cBackLog" min="0" class="form-control" id="current_back" placeholder="Total Current Back Logs" required="true"/>
                                     </div>
                                 </div>
                                 <div class="form-group" >
@@ -291,7 +291,7 @@ include 'layout/_header.php';
                                 <div class="form-group">
                                     <label for="cgpa" class="col-sm-2 control-label">CGPA </label>
                                     <div class="col-sm-10">
-                                        <input type="decimal" name="cgpa" class="form-control" />
+                                        <input type="decimal" name="cgpa" class="form-control" required="true" />
                                     </div>
                                 </div>
 
