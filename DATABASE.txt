@@ -1,0 +1,242 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.6
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 10, 2015 at 03:15 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `tpo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branches`
+--
+
+CREATE TABLE IF NOT EXISTS `branches` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `branches`
+--
+
+INSERT INTO `branches` (`id`, `name`, `created_at`) VALUES
+(1, 'Computer Science', '0000-00-00 00:00:00'),
+(2, 'Mechanical', '0000-00-00 00:00:00'),
+(3, 'Information Technology', '0000-00-00 00:00:00'),
+(4, 'Civil', '0000-00-00 00:00:00'),
+(5, 'Electricals & Electronics', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companies`
+--
+
+CREATE TABLE IF NOT EXISTS `companies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `c_name` varchar(100) NOT NULL,
+  `c_address` varchar(500) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `mobile` varchar(12) NOT NULL,
+  `fax` varchar(12) NOT NULL,
+  `ceo` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `c_name`, `c_address`, `email`, `mobile`, `fax`, `ceo`, `created_at`) VALUES
+(1, 'Tata Consultancy Services', '2123, Eastern Cross Road,\r\nWest Town,\r\nPune', 'tcs@tcs.in', '9827442157', '26311722', 'Natarajan Chandrasekaran', '2015-05-08 16:32:47'),
+(3, 'ertwer qwer', 'qwer qwer qwer', 'qwee@gmail.com', '1236547890', '123431231', 'werthy rgwtrg', '2015-05-08 16:44:04'),
+(4, 'jasdf ajksd', 'klasjdf jaskdfj', 'asdf@gmail.com', '1290389001', '129837192', 'asjdf iauwer nakf', '2015-05-08 16:44:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `current_backs`
+--
+
+CREATE TABLE IF NOT EXISTS `current_backs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `s_id` int(10) unsigned NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `current_backs`
+--
+
+INSERT INTO `current_backs` (`id`, `s_id`, `subject`) VALUES
+(1, 29, 'Physics'),
+(2, 30, 'BCE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `heading` varchar(500) NOT NULL,
+  `content` varchar(3000) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `heading`, `content`, `created_at`) VALUES
+(1, 'First NEws', 'This is my first news', '2015-04-16 15:26:12'),
+(2, 'Notice for all the 6<sup>th</sup> Semester Students ', 'All the students from 6<sup>th</sup> Semester must mail their respective <b>Resume</b> to the below given address.\r\n<br>\r\n<b><i>place_hcet@hcet.com</i></b>', '2015-04-16 15:44:38'),
+(3, 'I have a Party tonight', 'Mere sath h teen bandiya', '2015-04-28 10:12:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `queries`
+--
+
+CREATE TABLE IF NOT EXISTS `queries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(500) NOT NULL,
+  `message` varchar(2000) NOT NULL,
+  `ignore` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `queries`
+--
+
+INSERT INTO `queries` (`id`, `name`, `email`, `subject`, `message`, `ignore`, `created_at`) VALUES
+(1, 'Varun Shrivastava', 'varunshrivastava007@gmail.com', 'I need a job', 'I wish to know that are you the person who can provide me a job.', 0, '2015-04-14 11:58:36'),
+(2, 'Varun Shrivastava', 'varunshrivastava007@gmail.com', 'You are the Cause of Contact', 'Is it necessary that i should have a reason to contact you.', 0, '2015-04-14 15:22:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_acad_info`
+--
+
+CREATE TABLE IF NOT EXISTS `s_acad_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `enrollment` varchar(25) NOT NULL,
+  `t_back_logs` varchar(1000) NOT NULL,
+  `c_back_log` varchar(500) NOT NULL,
+  `cgpa` decimal(3,2) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `enrollment` (`enrollment`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+
+--
+-- Dumping data for table `s_acad_info`
+--
+
+INSERT INTO `s_acad_info` (`id`, `enrollment`, `t_back_logs`, `c_back_log`, `cgpa`, `created_at`) VALUES
+(29, '0203it121009', '2', '1', '7.60', '2015-04-16 15:15:03'),
+(30, '0203cs121043', '2', '1', '7.90', '2015-04-16 16:36:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_basic_info`
+--
+
+CREATE TABLE IF NOT EXISTS `s_basic_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `enrollment` varchar(25) NOT NULL,
+  `branch` varchar(100) NOT NULL,
+  `semester` int(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `enrollment` (`enrollment`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `s_basic_info`
+--
+
+INSERT INTO `s_basic_info` (`id`, `first_name`, `last_name`, `email`, `enrollment`, `branch`, `semester`, `created_at`) VALUES
+(2, 'Varun', 'Shrivastava', 'varunshrivastava007@gmail.com', '0203cs121043', '1', 5, '2015-04-16 14:36:45'),
+(3, 'Priyanka', 'Yadav', 'priyankarano.1994yadav@gmail.com', '0203it121009', '3', 5, '2015-04-16 14:46:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_personal_info`
+--
+
+CREATE TABLE IF NOT EXISTS `s_personal_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `father_name` varchar(255) NOT NULL,
+  `dob` date NOT NULL,
+  `enrollment` varchar(25) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `mobile` varchar(15) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `enrollment` (`enrollment`,`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `s_personal_info`
+--
+
+INSERT INTO `s_personal_info` (`id`, `first_name`, `last_name`, `father_name`, `dob`, `enrollment`, `email`, `gender`, `mobile`, `address`, `created_at`) VALUES
+(2, 'Varun', 'Shrivastava', 'Rajesh Shrivastava', '1994-07-16', '0203cs121043', 'varunshrivastava007@gmail.com', 'male', '9827983762', '2647, Azad Nagar\r\nRanjhi , Front Of Goswami Building', '2015-04-16 14:37:13'),
+(3, 'Priyanka', 'Yadav', 'Father''s Name', '1994-02-02', '0203it121009', 'priyankarano.1994yadav@gmail.com', 'female', '8602042302', 'Somewhere near pahenhra', '2015-04-16 14:47:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `total_backs`
+--
+
+CREATE TABLE IF NOT EXISTS `total_backs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `s_id` int(11) unsigned NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `total_backs`
+--
+
+INSERT INTO `total_backs` (`id`, `s_id`, `subject`) VALUES
+(1, 29, 'BCE'),
+(2, 29, 'Physics'),
+(3, 30, 'CSE'),
+(4, 30, 'BCE');
